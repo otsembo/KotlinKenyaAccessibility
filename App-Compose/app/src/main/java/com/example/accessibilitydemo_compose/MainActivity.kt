@@ -1,5 +1,6 @@
 package com.example.accessibilitydemo_compose
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,8 +19,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.os.ConfigurationCompat
 import coil.compose.AsyncImage
 import com.example.accessibilitydemo_compose.ui.theme.AppTheme
+import java.text.DateFormat
+import java.util.*
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -146,4 +150,13 @@ fun MyCheckBox(modifier: Modifier, text:String = "",) {
 
     }
 
+}
+
+fun convertDateToString(mCtx:Context) : String{
+    val locale = ConfigurationCompat.getLocales(mCtx.resources.configuration)[0]
+    val format = DateFormat
+        .getDateTimeInstance(DateFormat.DEFAULT,
+            DateFormat.SHORT,
+            locale)
+    return format.format(Date())
 }
