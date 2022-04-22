@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AccessibilityDemo</string>
+    <string name="username">JINA LA MTUMIAJI</string>
+    <string name="password">NENOSIRI</string>
+    <string name="remember_me">NIKUMBUKE</string>
+    <string name="log_in">INGIA</string>
+    <string name="create_an_account">FUNGUA AKAUNTI</string>
+    <string name="image_description">Picha ya mtu anayeangalia kifaa</string>
+</resources>
