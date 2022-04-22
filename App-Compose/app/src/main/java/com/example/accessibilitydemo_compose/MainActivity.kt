@@ -119,12 +119,12 @@ fun AppPage() {
 }
 
 @Composable
-fun MyImage(modifier: Modifier) {
+fun MyImage(modifier: Modifier,) {
 
     AsyncImage(
         modifier = modifier,
         model = R.drawable.login_image,
-        contentDescription = null,
+        contentDescription = stringResource(id = R.string.image_description),
         contentScale = ContentScale.Crop
     )
     
