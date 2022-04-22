@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App-Views</string>
+    <string name="app_name">AccessibilityDemo</string>
     <string name="username">USERNAME</string>
     <string name="password">PASSWORD</string>
     <string name="remember_me">REMEMBER ME</string>

@@ -20,7 +20,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:imageResource="@{image.resource}"
-            android:layout_margin="16dp" />
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
