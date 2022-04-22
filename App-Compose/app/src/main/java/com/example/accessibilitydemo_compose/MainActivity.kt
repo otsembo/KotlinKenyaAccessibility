@@ -48,7 +48,7 @@ fun AppPage() {
                 Text(
                     modifier = Modifier.padding(start = 16.dp),
                     text = stringResource(id = R.string.app_name),
-                    color = MaterialTheme.colorScheme.onPrimaryContainer,)
+                    color = MaterialTheme.colorScheme.onBackground,)
             }
 
             MyImage(modifier = Modifier
