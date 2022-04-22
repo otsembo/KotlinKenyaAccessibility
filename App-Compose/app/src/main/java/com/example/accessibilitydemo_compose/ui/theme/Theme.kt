@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import com.google.android.material.color.ColorRoles
 import com.google.android.material.color.MaterialColors
@@ -94,14 +95,14 @@ data class ExtendedColors(val colors: Array<CustomColor>)
 
 fun setupErrorColors(colorScheme: ColorScheme, isLight: Boolean): ColorScheme {
     val harmonizedError =
-        MaterialColors.harmonize(error, colorScheme.primary)
+        MaterialColors.harmonize(error.toArgb(), colorScheme.primary.toArgb())
     val roles = MaterialColors.getColorRoles(harmonizedError, isLight)
     //returns a colorScheme with newly harmonized error colors
     return colorScheme.copy(
-        error = roles.color,
-        onError = roles.onColor,
-        errorContainer = roles.colorContainer,
-        onErrorContainer = roles.onColorContainer
+        error = Color(roles.accent),
+        onError = Color(roles.accentContainer),
+        errorContainer = Color(roles.onAccent),
+        onErrorContainer = Color(roles.onAccentContainer)
     )
 }
 val initializeExtended = ExtendedColors(
@@ -118,10 +119,10 @@ fun setupCustomColors(
         // Blend or not
         if (shouldHarmonize) {
             val blendedColor =
-                MaterialColors.harmonize(customColor.color, colorScheme.primary)
+                MaterialColors.harmonize(customColor.color.toArgb(), colorScheme.primary.toArgb())
             customColor.roles = MaterialColors.getColorRoles(blendedColor, isLight)
         } else {
-            customColor.roles = MaterialColors.getColorRoles(customColor.color, isLight)
+            customColor.roles = MaterialColors.getColorRoles(customColor.color.toArgb(), isLight)
         }
     }
     return initializeExtended
@@ -145,7 +146,8 @@ fun HarmonizedTheme(
     } else {
         if (useDarkTheme) DarkThemeColors else LightThemeColors
     }
-    val colorsWithHarmonizedError = if(errorHarmonize) setupErrorColors(colors, !useDarkTheme) else colors
+
+    val colorsWithHarmonizedError = setupErrorColors(colors, !useDarkTheme)
 
     val extendedColors = setupCustomColors(colors, !useDarkTheme)
     CompositionLocalProvider(LocalExtendedColors provides extendedColors) {
